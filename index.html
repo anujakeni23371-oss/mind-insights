@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Insights - Stress Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mind Insights</h1>
+    <p>Take the stress assessment and see your stress level!</p>
+
+    <form id="quizForm">
+      <div class="question">
+        <label>1. How often do you feel stressed?</label>
+        <select name="q1">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>2. How do you sleep at night?</label>
+        <select name="q2">
+          <option value="0">Very well</option>
+          <option value="1">Okay</option>
+          <option value="2">Poorly</option>
+          <option value="3">Very poorly</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>3. How often do you feel anxious?</label>
+        <select name="q3">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>4. How often do you feel overwhelmed by tasks?</label>
+        <select name="q4">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>5. How often do you skip meals due to stress?</label>
+        <select name="q5">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>6. How often do you feel fatigued or tired?</label>
+        <select name="q6">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>7. How often do you feel irritable or frustrated?</label>
+        <select name="q7">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>8. How often do you feel difficulty concentrating?</label>
+        <select name="q8">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>9. How often do you feel tense or tight muscles?</label>
+        <select name="q9">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>10. How often do you feel you cannot relax?</label>
+        <select name="q10">
+          <option value="0">Never</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Often</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="calculateScore()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
