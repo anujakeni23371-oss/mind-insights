@@ -81,3 +81,25 @@ section {
   background-color: #d9f99d; /* soft pastel green */
   border-radius: 12px;
 }
+/* Style for radio buttons to look like clickable buttons */
+form label {
+  display: inline-block;
+  background-color: #dcfce7; /* light green */
+  color: #065f46; /* darker green text */
+  padding: 8px 15px;
+  margin: 5px 5px 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  user-select: none;
+}
+
+form input[type="radio"] {
+  display: none; /* hide default radio circle */
+}
+
+/* When a radio button is checked */
+form input[type="radio"]:checked + label {
+  background-color: #16a34a; /* main green */
+  color: white;
+}
