@@ -122,4 +122,13 @@
 
   <script src="script.js"></script>
 </body>
+  <script>
+  // Scroll smoothly to quiz form on page load
+  window.onload = function() {
+    const quizForm = document.getElementById('quizForm');
+    if (quizForm) {
+      quizForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+</script>
 </html>
