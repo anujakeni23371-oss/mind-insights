@@ -1,44 +1,47 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f8ff;
-  color: #333;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e6f2e6; /* light calming green */
+    color: #2f4f2f; /* dark green text for contrast */
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+nav {
+    background-color: #cce6cc; /* soft green nav bar */
+    padding: 10px;
+    text-align: center;
 }
 
-h1 {
-  text-align: center;
-  color: #4a90e2;
+nav a {
+    color: #2f4f2f;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
-.question {
-  margin-bottom: 20px;
+nav a:hover {
+    text-decoration: underline;
+}
+
+header, section, #tipsContent {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #f0fff0; /* subtle green card */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 button {
-  background: #4a90e2;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    background-color: #2f4f2f; /* dark green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover {
-  background: #357ab8;
-}
-
-#result {
-  margin-top: 20px;
-  font-weight: bold;
-  text-align: center;
+    background-color: #3e6f3e; /* slightly lighter green on hover */
 }
