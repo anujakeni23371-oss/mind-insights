@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Insights - Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="assessment.html">Assessment</a> |
+    <a href="tips.html">Tips</a>
+  </nav>
+
+  <h1>Stress Assessment</h1>
+
+  <form id="quizForm">
+    <!-- Question 1 -->
+    <div class="question">
+      <label>1. I feel stressed frequently.</label>
+      <select name="q1">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <label>2. I have trouble sleeping because of stress.</label>
+      <select name="q2">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <label>3. I feel anxious in daily life.</label>
+      <select name="q3">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <label>4. I get easily irritated or frustrated.</label>
+      <select name="q4">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <label>5. I have difficulty concentrating due to stress.</label>
+      <select name="q5">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <label>6. I feel overwhelmed by my responsibilities.</label>
+      <select name="q6">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <label>7. I experience physical symptoms (headache, tension) due to stress.</label>
+      <select name="q7">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <label>8. I feel anxious about future events.</label>
+      <select name="q8">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <label>9. I find it hard to relax.</label>
+      <select name="q9">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <label>10. I feel burned out or exhausted regularly.</label>
+      <select name="q10">
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="calculateScore()">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
