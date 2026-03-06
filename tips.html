@@ -12,31 +12,29 @@
     <a href="tips.html">Tips</a>
   </nav>
 
-  <h1>Your Stress Tips</h1>
+  <!-- Tips Page Content -->
+  <header class="home-header">
+    <div style="width:100%;">
+      <h1>Stress Management Tips</h1>
+      <p>Based on your stress score, here are some helpful tips to manage and reduce stress:</p>
 
-  <div id="tipsContent">
-    <h2>Your Stress Score</h2>
-    <p id="scoreDisplay"></p>
-    <p id="stressMessage"></p>
-    <a href="index.html"><button>Back to Home</button></a>
-  </div>
+      <section>
+        <h2>1. Deep Breathing</h2>
+        <p>Take slow, deep breaths to calm your nervous system and reduce tension.</p>
 
-  <script>
-    const score = parseInt(localStorage.getItem('stressScore'));
-    const msg = document.getElementById('stressMessage');
-    const scoreDisplay = document.getElementById('scoreDisplay');
+        <h2>2. Physical Activity</h2>
+        <p>Exercise regularly to release endorphins and improve mood.</p>
 
-    // Show the actual score
-    scoreDisplay.textContent = "Your Score: " + score + " / 30";
+        <h2>3. Healthy Sleep</h2>
+        <p>Maintain a consistent sleep schedule to help your body recover and reduce stress.</p>
 
-    // Show message based on score
-    if (score <= 13) {
-      msg.textContent = "Low Stress: Keep up your healthy habits and continue monitoring your stress regularly.";
-    } else if (score <= 23) {
-      msg.textContent = "Moderate Stress: Try relaxation techniques like deep breathing, short walks, or light exercise.";
-    } else {
-      msg.textContent = "High Stress: Consider talking to a counselor, practicing mindfulness, and taking breaks from stressful activities.";
-    }
-  </script>
+        <h2>4. Mindfulness & Meditation</h2>
+        <p>Practice mindfulness or meditation daily to stay centered and relaxed.</p>
+
+        <h2>5. Time Management</h2>
+        <p>Break tasks into smaller steps, prioritize, and take breaks to avoid feeling overwhelmed.</p>
+      </section>
+    </div>
+  </header>
 </body>
 </html>
