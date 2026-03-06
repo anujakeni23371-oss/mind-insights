@@ -1,69 +1,83 @@
+/* General page styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e6f2e6; /* light calming green */
-    color: #2f4f2f; /* dark green text */
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0fdf4; /* soft calming green background */
+  color: #1f2937; /* dark text for contrast */
 }
 
+/* Navigation menu */
 nav {
-    background-color: #cce6cc; /* soft green nav bar */
-    padding: 15px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #16a34a; /* green nav */
+  padding: 10px;
+  text-align: center;
 }
 
 nav a {
-    color: #2f4f2f;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: bold;
-    font-size: 16px;
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-header, section, #tipsContent, form {
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 700px;
-    background-color: #f0fff0; /* subtle green card */
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* Header with flex for image + text */
+.home-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* responsive wrap */
+  justify-content: center;
+  padding: 20px;
+  background-color: #dcfce7; /* light green behind header */
+  border-radius: 12px;
+  margin: 20px;
 }
 
-h1, h2 {
+/* Image styling */
+.home-header img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .home-header {
+    flex-direction: column;
     text-align: center;
+  }
+
+  .home-header img {
+    margin-top: 15px;
+  }
 }
 
-p {
-    line-height: 1.6;
-    text-align: justify;
-}
-
+/* Buttons */
 button {
-    display: block;
-    background-color: #2f4f2f; /* dark green button */
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    margin: 20px auto 0 auto;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #16a34a; /* calming green button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-    background-color: #3e6f3e; /* hover effect */
+  background-color: #15803d; /* darker green on hover */
 }
 
-select {
-    padding: 5px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #2f4f2f;
+/* Section styling */
+section {
+  padding: 20px;
+  margin: 20px;
+  background-color: #d9f99d; /* soft pastel green */
+  border-radius: 12px;
 }
