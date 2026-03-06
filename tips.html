@@ -15,15 +15,23 @@
   <h1>Your Stress Tips</h1>
 
   <div id="tipsContent">
-    <p>Based on your stress score, here are some tips:</p>
-
-    <ul>
-      <li><strong>Low Stress:</strong> Keep up your healthy habits and continue monitoring your stress regularly.</li>
-      <li><strong>Moderate Stress:</strong> Try relaxation techniques like deep breathing, short walks, or light exercise.</li>
-      <li><strong>High Stress:</strong> Consider talking to a counselor, practicing mindfulness, and taking breaks from stressful activities.</li>
-    </ul>
+    <h2>Your Stress Level</h2>
+    <p id="stressMessage"></p>
+    <a href="index.html"><button>Back to Home</button></a>
   </div>
 
-  <a href="index.html"><button>Back to Home</button></a>
+  <script>
+    // Read score from localStorage
+    const score = parseInt(localStorage.getItem('stressScore'));
+    const msg = document.getElementById('stressMessage');
+
+    if (score <= 13) {
+      msg.textContent = "Low Stress: Keep up your healthy habits and continue monitoring your stress regularly.";
+    } else if (score <= 23) {
+      msg.textContent = "Moderate Stress: Try relaxation techniques like deep breathing, short walks, or light exercise.";
+    } else {
+      msg.textContent = "High Stress: Consider talking to a counselor, practicing mindfulness, and taking breaks from stressful activities.";
+    }
+  </script>
 </body>
 </html>
