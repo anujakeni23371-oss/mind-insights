@@ -103,3 +103,20 @@ form input[type="radio"]:checked + label {
   background-color: #16a34a; /* main green */
   color: white;
 }
+/* Tips Page Styling */
+header.home-header section {
+  background-color: #dcfce7; /* light green background for sections */
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+header.home-header section h2 {
+  color: #16a34a; /* main green headings */
+  margin-bottom: 8px;
+}
+
+header.home-header section p {
+  color: #065f46; /* dark green text */
+  line-height: 1.5;
+}
