@@ -15,16 +15,21 @@
   <h1>Your Stress Tips</h1>
 
   <div id="tipsContent">
-    <h2>Your Stress Level</h2>
+    <h2>Your Stress Score</h2>
+    <p id="scoreDisplay"></p>
     <p id="stressMessage"></p>
     <a href="index.html"><button>Back to Home</button></a>
   </div>
 
   <script>
-    // Read score from localStorage
     const score = parseInt(localStorage.getItem('stressScore'));
     const msg = document.getElementById('stressMessage');
+    const scoreDisplay = document.getElementById('scoreDisplay');
 
+    // Show the actual score
+    scoreDisplay.textContent = "Your Score: " + score + " / 30";
+
+    // Show message based on score
     if (score <= 13) {
       msg.textContent = "Low Stress: Keep up your healthy habits and continue monitoring your stress regularly.";
     } else if (score <= 23) {
