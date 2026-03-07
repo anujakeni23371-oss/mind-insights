@@ -1,184 +1,106 @@
-/* General Page Styles */
 body {
-  background-color: #f8faf5; /* off-white */
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222; /* default text */
-  text-align: center;
+  background:#f8faf5;         /* Off-white background */
+  font-family:sans-serif;
+  margin:0;
+  padding:0;
+  color:#222;
+  text-align:center;
 }
 
-/* Links */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Buttons */
-button {
-  font-family: 'Arial', sans-serif;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.assessment-btn, #resultButtons button, .options button {
-  background-color: #b0e0c8; /* pastel green */
-  color: #065f46; /* dark green text */
-}
-
-.assessment-btn:hover, #resultButtons button:hover, .options button:hover {
-  background-color: #9dd4b0; /* slightly darker green on hover */
-}
-
-/* Header */
-.home-header h1 {
-  color: #065f46;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.home-header p {
-  font-size: 1.2rem;
-  color: #000;
-  margin-bottom: 20px;
-}
-
-.home-header section {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.home-header section h2 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.home-header section p {
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Assessment Page Styles */
 .container {
-  max-width: 700px;
-  margin: 50px auto;
-  text-align: center;
-  padding: 20px;
+  max-width:800px;
+  margin:80px auto;
+  padding:20px;
 }
 
+/* Headline */
+h1 {
+  color:#065f46;              /* Dark green */
+  font-size:4rem;
+  margin-bottom:25px;
+}
+
+/* Subtext & question */
+p {
+  font-size:1.6rem;
+  margin:15px 0;
+  color:#333;
+  line-height:1.8;
+}
+
+/* Name input */
 input[type="text"] {
-  width: 80%;
-  max-width: 400px;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  width:80%;
+  max-width:450px;
+  padding:15px;
+  margin-bottom:25px;
+  font-size:1.3rem;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
-/* Question & Options */
-.question {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
+/* Options buttons */
+.options button, #assessmentBtn, #resultButtons button {
+  display:block;
+  width:90%;
+  max-width:450px;
+  padding:18px;
+  margin:12px auto;
+  font-size:1.3rem;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#b0e0c8;       /* Pastel green */
+  color:#065f46;
+  transition:0.2s;
+}
+.options button:hover, #assessmentBtn:hover, #resultButtons button:hover {
+  background:#9dd4b0;       /* Slightly darker green on hover */
 }
 
-.options button {
-  display: block;
-  width: 80%;
-  max-width: 400px;
-  padding: 12px;
-  margin: 10px auto;
-  font-size: 1rem;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
-}
-
-/* Progress Bar */
+/* Progress bar */
 #progressContainer {
-  width: 90%;
-  height: 20px;
-  background: #e6f3eb;
-  border-radius: 10px;
-  margin: 20px auto 30px auto;
-  overflow: hidden;
+  width:90%;
+  height:25px;
+  background:#e6f3eb;       /* Light green background */
+  border-radius:10px;
+  margin:25px auto 35px auto;
+  overflow:hidden;
+}
+#progressBar {
+  height:100%;
+  width:0%;
+  border-radius:10px 0 0 10px;
+  transition:width 0.6s ease, background 0.3s ease;
 }
 
-#progressBar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(to right, #b8c996, #827a8e);
-  border-radius: 10px 0 0 10px;
-  transition: width 0.6s ease, background 0.3s ease;
+/* Tips */
+#tips {
+  margin-top:25px;
+  text-align:left;
+  font-size:1.2rem;
+  line-height:1.8;
+  color:#222;
 }
 
 /* Disclaimer */
 #disclaimer {
-  font-size: 0.9rem;
-  color: #555;
-  text-align: right;
-  margin-top: 15px;
-}
-
-/* Final Result Buttons */
-#resultButtons {
-  margin-top: 20px;
-  display: none;
-  text-align: center;
-}
-
-#resultButtons button {
-  width: 40%;
-  max-width: 200px;
-  margin: 10px;
-  padding: 10px;
-  font-size: 1rem;
-}
-
-/* Tips Section */
-#questionContainer div {
-  margin-top: 15px;
-  text-align: left;
+  font-size:1rem;
+  color:#555;
+  text-align:right;
+  margin-top:20px;
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 
-/* Tips Page */
-section {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-/* Footer */
-footer {
-  margin-top: 40px;
-  padding: 15px;
-  color: #555;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-/* Responsive Text */
-@media screen and (max-width: 768px) {
-  .home-header h1 {
-    font-size: 2rem;
-  }
-  .home-header p, section p {
-    font-size: 1rem;
-  }
-  .question {
-    font-size: 1.3rem;
-  }
-  .options button, #resultButtons button, .assessment-btn {
-    font-size: 0.95rem;
-  }
+/* Responsive */
+@media screen and (max-width:768px){
+  h1 { font-size:2.8rem; }
+  p { font-size:1.3rem; }
+  input[type="text"] { font-size:1.1rem; padding:14px; width:95%; }
+  .options button, #assessmentBtn, #resultButtons button { font-size:1.1rem; padding:14px; width:95%; }
+  #tips { font-size:1.05rem; line-height:1.6; }
+  #disclaimer { font-size:0.95rem; }
 }
 
