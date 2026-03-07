@@ -4,40 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stress Assessment</title>
-<link rel="stylesheet" href="style_final.css">
 <style>
-body { background:#f8faf5; font-family:sans-serif; }
-.container { max-width:700px; margin:50px auto; text-align:center; padding:20px; }
-input { width:80%; max-width:400px; padding:10px; margin-bottom:20px; font-size:1rem; border-radius:6px; border:1px solid #ccc; }
-.question { font-size:1.5rem; margin-bottom:20px; opacity:0; animation:fadeIn 0.5s forwards; }
-.options button { display:block; width:80%; max-width:400px; padding:12px; margin:10px auto; font-size:1rem; background:#b0e0c8; color:#065f46; border:none; border-radius:8px; cursor:pointer; transition:0.2s; opacity:0; animation:fadeIn 0.5s forwards; }
+body { background:#f8faf5; font-family:sans-serif; margin:0; padding:0; color:#222; text-align:center; }
+.container { max-width:700px; margin:50px auto; padding:20px; }
+
+/* Headline */
+h1 { color:#065f46; font-size:2.5rem; margin-bottom:10px; }
+
+/* Name input */
+input[type="text"] { width:80%; max-width:400px; padding:10px; margin-bottom:20px; font-size:1.1rem; border-radius:6px; border:1px solid #ccc; }
+
+/* Question */
+#questionContainer { font-size:2rem; margin-bottom:30px; line-height:1.6; opacity:0; animation:fadeIn 0.5s forwards; }
+
+/* Options buttons */
+.options button { display:block; width:90%; max-width:450px; padding:15px; margin:12px auto; font-size:1.2rem; border:none; border-radius:8px; cursor:pointer; background:#b0e0c8; color:#065f46; transition:0.2s; opacity:0; animation:fadeIn 0.5s forwards; }
 .options button:hover { background:#9dd4b0; }
-@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+/* Progress bar */
 #progressContainer { width:90%; height:20px; background:#e6f3eb; border-radius:10px; margin:20px auto 30px auto; overflow:hidden; }
-#progressBar { height:100%; width:0%; background:linear-gradient(to right,#b8c996,#827a8e); border-radius:10px 0 0 10px; transition:width 0.6s ease, background 0.3s ease; }
-#disclaimer { font-size:0.9rem; color:#555; text-align:right; margin-top:15px; }
-#resultButtons { margin-top:20px; display:none; text-align:center; }
-#resultButtons button { width:40%; max-width:200px; margin:10px; padding:10px; font-size:1rem; border:none; border-radius:6px; cursor:pointer; }
+#progressBar { height:100%; width:0%; border-radius:10px 0 0 10px; transition:width 0.6s ease, background 0.3s ease; }
+
+/* Tips */
+#tips { margin-top:25px; text-align:left; font-size:1.1rem; line-height:1.8; }
+
+/* Disclaimer */
+#disclaimer { font-size:1rem; color:#555; text-align:right; margin-top:20px; }
+
+/* Result buttons */
+#resultButtons { margin-top:20px; display:none; }
+#resultButtons button { width:40%; max-width:200px; margin:10px; padding:10px; font-size:1rem; border:none; border-radius:6px; cursor:pointer; background:#b0e0c8; color:#065f46; }
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+/* Responsive */
+@media screen and (max-width:768px){
+  h1 { font-size:2rem; }
+  #questionContainer { font-size:1.7rem; line-height:1.5; }
+  .options button { font-size:1.05rem; padding:12px; width:95%; }
+  #tips { font-size:1rem; line-height:1.6; }
+  #disclaimer { font-size:0.95rem; }
+}
 </style>
 </head>
 <body>
-
 <div class="container">
   <h1>Stress Self-Assessment</h1>
   <input type="text" id="nameInput" placeholder="Enter your name (optional)">
-
-  <div id="progressContainer">
-    <div id="progressBar"></div>
-  </div>
-
-  <div id="questionContainer" class="question">Loading question...</div>
+  <div id="progressContainer"><div id="progressBar"></div></div>
+  <div id="questionContainer">Loading question...</div>
   <div class="options" id="optionsContainer"></div>
-
-  <div id="disclaimer">This tool is a self-assessment guide for stress awareness. It does not provide a medical diagnosis.</div>
-
+  <div id="tips"></div>
+  <div id="disclaimer">This is a self-assessment tool. It does not provide a medical diagnosis.</div>
   <div id="resultButtons">
-    <button id="reassessBtn" style="background:#b0e0c8; color:#065f46;">Re-assess</button>
-    <button onclick="window.location.href='index.html'" style="background:#b0e0c8; color:#065f46;">Home</button>
+    <button id="reassessBtn">Re-assess</button>
+    <button onclick="window.location.href='index.html'">Home</button>
   </div>
 </div>
 
@@ -54,12 +76,13 @@ const questions = [
   { text:"Do you talk to friends/family about your stress?", options:["Yes","Sometimes","No"] },
   { text:"Do you feel your stress affects your concentration?", options:["Not at all","Sometimes","Yes"] }
 ];
-let currentQuestion=0,score=0;
+
+let currentQuestion=0, score=0;
+
 function showQuestion(){
   if(currentQuestion<questions.length){
     const q=questions[currentQuestion];
-    const qc=document.getElementById('questionContainer');
-    qc.innerText=q.text; qc.style.opacity=0; qc.style.animation="fadeIn 0.5s forwards";
+    const qc=document.getElementById('questionContainer'); qc.innerText=q.text; qc.style.opacity=0; qc.style.animation="fadeIn 0.5s forwards";
     const oc=document.getElementById('optionsContainer'); oc.innerHTML=''; oc.style.display='block';
     q.options.forEach((opt,idx)=>{
       const btn=document.createElement('button'); btn.innerText=opt; btn.onclick=()=>answer(idx);
@@ -68,40 +91,55 @@ function showQuestion(){
     updateProgress();
   }else showFinalResult();
 }
-function answer(selected){score+=selected;currentQuestion++;showQuestion();}
+
+function answer(selected){ score+=selected; currentQuestion++; showQuestion(); }
+
 function updateProgress(){
-  const percent=(currentQuestion/questions.length)*100;
-  const startGreen=230,endGreen=95;
-  const greenValue=startGreen-Math.floor((currentQuestion/questions.length)*(startGreen-endGreen));
-  const pb=document.getElementById('progressBar');
-  pb.style.width=percent+'%';
-  pb.style.background=`linear-gradient(to right,rgb(168,${greenValue},163),rgb(76,${greenValue},80))`;
+  const percent = (currentQuestion / questions.length) * 100;
+  const pb = document.getElementById('progressBar');
+  pb.style.width = percent + '%';
+  const start = 180; const end = 60;
+  const gVal = Math.floor(start - ((start - end)*(currentQuestion/questions.length)));
+  pb.style.background = `linear-gradient(to right, rgb(${gVal},230,${gVal}), rgb(${gVal},180,${gVal}))`;
 }
+
 function showFinalResult(){
   document.getElementById('optionsContainer').style.display='none';
   const name=document.getElementById('nameInput').value||'User';
-  const qc=document.getElementById('questionContainer'); let displayScore=0;
+  const qc=document.getElementById('questionContainer'); 
+  let displayScore=0;
   const interval=setInterval(()=>{
-    if(displayScore<score){displayScore++;qc.innerText=`Thank you, ${name}! Your stress score is: ${displayScore}`;
-    if(displayScore<=10) qc.style.color='green'; else if(displayScore<=20) qc.style.color='orange'; else qc.style.color='red';
-    } else {clearInterval(interval); showTips(displayScore);}
+    if(displayScore<score){
+      displayScore++;
+      qc.innerText=`${name}, Your stress score is: ${displayScore}`;
+    } else {
+      clearInterval(interval);
+      let stressLevel='', color='';
+      if(score<=10){ stressLevel='Low Stress'; color='green'; }
+      else if(score<=20){ stressLevel='Moderate Stress'; color='orange'; }
+      else{ stressLevel='High Stress'; color='red'; }
+      qc.innerHTML = `${name}, Your stress score is: <span style="color:${color}; font-weight:bold;">${score}</span> <br> Stress Level: <span style="color:${color}; font-weight:bold;">${stressLevel}</span>`;
+      showTips(score);
+    }
   },100);
   document.getElementById('progressBar').style.width='100%';
 }
+
 function showTips(finalScore){
-  const tips=document.createElement('div'); tips.style.marginTop='15px'; tips.style.textAlign='left';
-  if(finalScore<=10){tips.innerHTML="<h3>Low Stress Tips:</h3><p>Keep up your healthy routines and stay mindful of your workload.</p>";}
-  else if(finalScore<=20){tips.innerHTML="<h3>Moderate Stress Tips:</h3><p>Try relaxation techniques, take short breaks, and talk to friends/family.</p>";}
-  else{tips.innerHTML="<h3>High Stress Tips:</h3><p>Consider professional guidance, regular exercise, and structured stress management.</p>";}
-  document.getElementById('questionContainer').appendChild(tips);
+  const tips=document.getElementById('tips'); tips.innerHTML='';
+  if(finalScore<=10) tips.innerHTML="<h3>Low Stress Tips:</h3><p>Keep up your healthy routines and stay mindful of your workload.</p>";
+  else if(finalScore<=20) tips.innerHTML="<h3>Moderate Stress Tips:</h3><p>Take short breaks, try relaxation techniques, and talk to friends/family.</p>";
+  else tips.innerHTML="<h3>High Stress Tips:</h3><p>Consider professional guidance, regular exercise, and structured stress management.</p>";
   document.getElementById('resultButtons').style.display='block';
 }
+
 document.getElementById('reassessBtn').onclick=()=>{
-  currentQuestion=0;score=0;
-  document.getElementById('optionsContainer').style.display='block';
+  currentQuestion=0; score=0; document.getElementById('optionsContainer').style.display='block';
   document.getElementById('resultButtons').style.display='none';
+  document.getElementById('tips').innerHTML='';
   showQuestion();
 }
+
 window.onload=showQuestion;
 </script>
 </body>
