@@ -134,3 +134,34 @@ border-radius:6px;
 border:1px solid #ccc;
 width:200px;
 }
+/* result box */
+
+#result{
+background:#f6fbf8;
+padding:25px;
+border-radius:12px;
+margin-top:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* score text */
+
+#score{
+color:#3a6f55;
+font-size:24px;
+margin-bottom:10px;
+}
+
+/* stress level */
+
+#stress-level{
+color:#5fbf8f;
+margin-bottom:10px;
+}
+
+/* tip text */
+
+#tip{
+font-size:16px;
+color:#444;
+}
