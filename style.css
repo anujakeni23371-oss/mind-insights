@@ -1,194 +1,165 @@
-/* ---------- General Styles ---------- */
+/* ===== General Styles ===== */
 body {
   font-family: Arial, sans-serif;
-  background-color: #fefefe; /* off-white */
-  color: #065f46; /* dark green text */
+  background-color: #fefefc; /* off-white background */
+  color: #065f46; /* dark pastel green text */
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }
 
-.navbar {
-  background-color: #a8d5ba; /* pastel green navbar */
-  padding: 12px 0;
+/* ===== Navigation ===== */
+nav {
+  background-color: #a8d5ba; /* calm pastel green */
+  padding: 12px;
   text-align: center;
 }
 
-.navbar a {
-  color: #065f46;
+nav a {
+  color: white;
   text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
+  margin: 0 12px;
+  font-weight: 600;
 }
 
-.navbar a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-/* ---------- Sections ---------- */
-section {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 15px;
-  line-height: 1.6;
+/* ===== Home Page ===== */
+header.home-header {
+  padding: 25px 15px;
+  text-align: center;
 }
 
-h1 {
-  font-size: 2.2rem;
-  text-align: center;
+header.home-header h1 {
+  font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
-p.intro {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  text-align: center;
+header.home-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 10px auto;
 }
 
-/* ---------- Assessment & Quiz ---------- */
-input[type="text"] {
+header.home-header img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* ===== Buttons ===== */
+button, .assessment-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #b0e0c8; /* pastel green */
+  color: #065f46;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 8px 0;
+  display: inline-block;
+}
+
+button:hover, .assessment-btn:hover {
+  background-color: #9dd4b0; /* slightly darker on hover */
+}
+
+/* ===== Assessment Form ===== */
+form {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+}
+
+#questionContainer {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.options button {
   width: 90%;
   max-width: 400px;
-  padding: 12px;
-  font-size: 1rem;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  margin: 10px auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
+/* ===== Progress Bar ===== */
 #progressContainer {
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
   height: 20px;
-  background-color: #e0f2e9; /* very light green */
+  background: #e6f3eb; /* light pastel green background */
   border-radius: 10px;
-  margin: 15px auto;
+  margin: 15px auto 30px auto;
   overflow: hidden;
 }
 
 #progressBar {
   height: 100%;
   width: 0%;
+  background: linear-gradient(to right, #b8c996, #827a8e); /* pastel gradient */
   border-radius: 10px 0 0 10px;
   transition: width 0.6s ease, background 0.3s ease;
 }
 
-.question {
-  font-size: 1.4rem;
-  margin: 20px 0 15px 0;
-  text-align: center;
-}
-
-.options button {
-  display: block;
-  width: 90%;
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 12px;
-  font-size: 1rem;
-  background-color: #b7e4c7; /* soft pastel green */
-  color: #065f46;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.options button:hover {
-  background-color: #9fd8a2; /* slightly darker on hover */
-}
-
-.assessment-btn {
-  display: block;
-  width: 90%;
-  max-width: 300px;
-  margin: 15px auto;
-  padding: 12px;
-  font-size: 1rem;
-  background-color: #b7e4c7;
-  color: #065f46;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-}
-
-.assessment-btn:hover {
-  background-color: #9fd8a2;
-}
-
-/* ---------- Result ---------- */
-#result {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#score {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-#stress-level {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-#tip {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  line-height: 1.5;
-}
-
-/* ---------- Disclaimer ---------- */
-#disclaimer {
-  font-size: 0.85rem;
-  color: #555;
-  text-align: center;
-  margin-top: 25px;
-}
-
-/* ---------- Tips Page ---------- */
+/* ===== Tips Page ===== */
 header.home-header section {
-  padding: 15px;
-  margin: 20px auto;
+  background-color: transparent; /* remove ugly green box */
+  padding: 10px 15px;
+  margin: 15px 0;
+  border-radius: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 header.home-header section h2 {
   color: #065f46;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-size: 1.3rem;
 }
 
 header.home-header section p {
   color: #065f46;
+  line-height: 1.6;
   margin-bottom: 12px;
-  line-height: 1.5;
 }
 
-/* ---------- Footer ---------- */
-footer {
-  margin-top: 40px;
-  padding: 15px;
-  background-color: #a8d5ba; /* pastel green */
-  color: #065f46;
+/* ===== Disclaimer / Footer ===== */
+#disclaimer, footer {
+  font-size: 0.85rem;
+  color: #555;
   text-align: center;
-  font-size: 0.9rem;
+  margin-top: 20px;
 }
 
-/* ---------- Responsive ---------- */
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  header.home-header h1 {
+    font-size: 2rem;
   }
 
-  .question {
+  header.home-header p {
+    font-size: 1rem;
+  }
+
+  #questionContainer {
     font-size: 1.2rem;
   }
 
-  .options button, .assessment-btn {
+  button, .assessment-btn {
     width: 95%;
-    font-size: 0.95rem;
+  }
+
+  #progressContainer {
+    width: 95%;
   }
 }
