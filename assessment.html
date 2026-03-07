@@ -3,209 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stress Self-Assessment</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
-    display: flex; flex-direction: column;
-    align-items: center;
-    background: #f5f5f5;
-    min-height: 100vh;
-  }
-  .container {
-    width: 95%; max-width: 800px;
-    margin-top: 20px;
-    text-align: center;
-  }
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  #nameInput {
-    padding: 12px;
-    font-size: 1rem;
-    width: 80%;
-    max-width: 400px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  #progressContainer {
-    width: 100%;
-    background: #d4f0d4;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    height: 20px;
-    overflow: hidden;
-  }
-  #progressBar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(to right, #a8e6a3, #4caf50);
-    border-radius: 10px 0 0 10px;
-    transition: width 0.5s ease-in-out, background 0.3s ease;
-  }
-  .question {
-    font-size: 1.5rem; 
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  .options button {
-    display: block;
-    width: 80%;
-    max-width: 400px;
-    padding: 12px;
-    margin: 10px auto;
-    font-size: 1rem;
-    background: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  .options button:hover {
-    background: #3e8e41;
-  }
-  #disclaimer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  /* Small phone adjustments */
-  @media screen and (max-width: 400px) {
-    h1 { font-size: 1.8rem; }
-    #questionContainer { font-size: 1.2rem; }
-    .options button { width: 90%; font-size: 0.95rem; padding: 10px; }
-    #nameInput { width: 90%; font-size: 0.95rem; padding: 10px; }
-    #progressContainer { height: 15px; }
-  }
-</style>
+<title>Stress Assessment</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-  <h1>Stress Self-Assessment</h1>
-  <input type="text" id="nameInput" placeholder="Enter your name (optional)">
-  
-  <div id="progressContainer">
-    <div id="progressBar"></div>
-  </div>
-  
-  <div id="questionContainer" class="question">Loading question...</div>
-  
-  <div class="options" id="optionsContainer"></div>
-  
-  <div id="disclaimer">
-    This tool is a self-assessment guide for stress awareness. It does not provide a medical diagnosis.
-  </div>
+<nav class="navbar">
+<a href="index.html">Home</a>
+<a href="assessment.html">Assessment</a>
+</nav>
+
+<section class="home">
+
+<h1>Stress Assessment</h1>
+
+<!-- Name input -->
+
+<div id="start-screen">
+
+<p>Enter your name (optional)</p>
+
+<input type="text" id="username" placeholder="Your name">
+
+<br><br>
+
+<button class="assessment-btn" onclick="startQuiz()">Start Assessment</button>
+
 </div>
 
+<!-- Progress bar -->
+
+<div class="progress-container" style="display:none;" id="progress-container">
+<div id="progress-bar"></div>
+</div>
+
+<!-- Quiz -->
+
+<div id="quiz-container" style="display:none;">
+
+<h2 id="question"></h2>
+
+<div id="answers"></div>
+
+</div>
+
+<!-- Result -->
+
+<div id="result" style="display:none;">
+
+<h2 id="score"></h2>
+
+<h3 id="stress-level"></h3>
+
+<p id="tip"></p>
+
+<br>
+
+<button onclick="restartQuiz()" class="assessment-btn">
+Re-Assessment
+</button>
+
+<a href="index.html" class="assessment-btn">
+Home Page
+</a>
+
+</div>
+
+</section>
+
+<!-- Small disclaimer -->
+
+<p style="position:fixed;bottom:10px;right:10px;font-size:12px;color:#777;">
+For stress awareness only. Not a medical diagnosis.
+</p>
+
 <script>
+
 const questions = [
-  { text: "How often do you feel stressed in a week?", options: ["Rarely", "Sometimes", "Often"] },
-  { text: "Do you find it hard to sleep due to stress?", options: ["No", "Occasionally", "Yes"] },
-  { text: "How often do you feel overwhelmed with tasks?", options: ["Rarely", "Sometimes", "Often"] },
-  { text: "Do you feel anxious about your studies/work?", options: ["Not at all", "Sometimes", "Yes"] },
-  { text: "Do you take breaks or relax during stressful days?", options: ["Always", "Sometimes", "Rarely"] },
-  { text: "Do you feel easily irritated or frustrated?", options: ["No", "Sometimes", "Often"] },
-  { text: "How often do you skip meals or eat irregularly due to stress?", options: ["Rarely", "Sometimes", "Often"] },
-  { text: "Do you engage in physical activity to relieve stress?", options: ["Always", "Sometimes", "Never"] },
-  { text: "Do you talk to friends/family about your stress?", options: ["Yes", "Sometimes", "No"] },
-  { text: "Do you feel your stress affects your concentration?", options: ["Not at all", "Sometimes", "Yes"] }
+
+{q:"How often do you feel overwhelmed?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you have trouble sleeping because of worries?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you feel tired even after resting?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you find it difficult to concentrate?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you feel irritated easily?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you feel pressure from work or studies?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you feel anxious without clear reason?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you overeat or skip meals when stressed?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you feel mentally exhausted?", a:["Never","Sometimes","Often","Always"]},
+
+{q:"Do you struggle to relax?", a:["Never","Sometimes","Often","Always"]}
+
 ];
 
 let currentQuestion = 0;
-let score = 0; 
+let score = 0;
+let userName = "";
 
-function showQuestion() {
-  if(currentQuestion < questions.length){
-    const q = questions[currentQuestion];
-    const questionContainer = document.getElementById('questionContainer');
-    questionContainer.innerText = q.text;
-    questionContainer.style.opacity = 0;
-    questionContainer.style.animation = "fadeIn 0.5s forwards";
+const questionEl = document.getElementById("question");
+const answersEl = document.getElementById("answers");
+const progressBar = document.getElementById("progress-bar");
 
-    const optionsContainer = document.getElementById('optionsContainer');
-    optionsContainer.innerHTML = ''; 
+function startQuiz(){
 
-    q.options.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.innerText = opt;
-      btn.onclick = () => answer(idx);
-      btn.style.opacity = 0;
-      btn.style.animation = "fadeIn 0.5s forwards";
-      optionsContainer.appendChild(btn);
-    });
+userName = document.getElementById("username").value;
 
-    updateProgress();
-  } else {
-    showFinalResult();
-  }
+document.getElementById("start-screen").style.display="none";
+document.getElementById("quiz-container").style.display="block";
+document.getElementById("progress-container").style.display="block";
+
+showQuestion();
+
 }
 
-function answer(selected) {
-  score += selected; 
-  currentQuestion++;
-  showQuestion();
+function showQuestion(){
+
+const q = questions[currentQuestion];
+
+questionEl.textContent = q.q;
+
+answersEl.innerHTML = "";
+
+q.a.forEach((answer,index)=>{
+
+const btn = document.createElement("button");
+
+btn.textContent = answer;
+btn.classList.add("assessment-btn");
+
+btn.onclick = () => {
+
+score += index;
+
+currentQuestion++;
+
+updateProgress();
+
+if(currentQuestion < questions.length){
+
+showQuestion();
+
+}else{
+
+showResult();
+
 }
 
-function updateProgress() {
-  const percent = ((currentQuestion)/questions.length)*100;
-  const startGreen = 230; 
-  const endGreen = 95; 
-  const greenValue = startGreen - Math.floor((currentQuestion / questions.length) * (startGreen - endGreen));
-  const progressBar = document.getElementById('progressBar');
-  progressBar.style.width = percent + '%';
-  progressBar.style.background = `linear-gradient(to right, rgb(168, ${greenValue}, 163), rgb(76, ${greenValue}, 80))`;
-}
-
-function showFinalResult() {
-  document.getElementById('optionsContainer').style.display = 'none';
-  const name = document.getElementById('nameInput').value || 'User';
-  const questionContainer = document.getElementById('questionContainer');
-  let displayScore = 0;
-
-  const interval = setInterval(() => {
-    if(displayScore < score) {
-      displayScore++;
-      questionContainer.innerText = `Thank you, ${name}! Your stress score is: ${displayScore}`;
-      if(displayScore <= 10) questionContainer.style.color = 'green';
-      else if(displayScore <= 20) questionContainer.style.color = 'orange';
-      else questionContainer.style.color = 'red';
-    } else {
-      clearInterval(interval);
-    }
-  }, 100);
-
-  const progressBar = document.getElementById('progressBar');
-  progressBar.style.width = '100%';
-  const restartBtn = document.createElement("button");
-restartBtn.innerText = "Restart Assessment";
-restartBtn.style.marginTop = "20px";
-
-restartBtn.onclick = function(){
-location.reload();
 };
 
-document.getElementById("optionsContainer").appendChild(restartBtn);
-document.getElementById("optionsContainer").style.display="block";
-  progressBar.style.background = 'linear-gradient(to right, #4caf50, #2e7d32)';
+answersEl.appendChild(btn);
+
+});
+
 }
 
-window.onload = showQuestion;
+function updateProgress(){
+
+let progress = (currentQuestion / questions.length) * 100;
+
+progressBar.style.width = progress + "%";
+
+}
+
+function showResult(){
+
+document.getElementById("quiz-container").style.display="none";
+document.getElementById("result").style.display="block";
+
+let level="";
+let tip="";
+
+if(score <=10){
+
+level="Low Stress";
+tip="Keep maintaining healthy habits like sleep, exercise, and relaxation.";
+
+}
+
+else if(score <=20){
+
+level="Moderate Stress";
+tip="Take breaks, practice breathing exercises, and manage your workload.";
+
+}
+
+else{
+
+level="High Stress";
+tip="Consider talking to someone you trust and prioritize rest and self-care.";
+
+}
+
+let nameText = userName ? userName + ", " : "";
+
+document.getElementById("score").textContent =
+nameText + "your score is " + score;
+
+document.getElementById("stress-level").textContent =
+"Stress Level: " + level;
+
+document.getElementById("tip").textContent =
+"Tip: " + tip;
+
+}
+
+function restartQuiz(){
+
+currentQuestion = 0;
+score = 0;
+
+document.getElementById("result").style.display="none";
+document.getElementById("quiz-container").style.display="block";
+
+updateProgress();
+showQuestion();
+
+}
+
 </script>
-<footer style="margin-top:40px; padding:15px; background:#16a34a; color:white; text-align:center; font-size:0.9rem;">
-  <p>Mind Insights – Stress Awareness Tool</p>
-  <p>This website provides a self-assessment for stress awareness only. It is not a medical or psychological diagnosis.</p>
-</footer>
+
 </body>
 </html>
+
