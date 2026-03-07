@@ -3,6 +3,50 @@
 <head>
   <title>Mind Insights - Home</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Responsive adjustments for home page */
+    .home-header h1 {
+      font-size: 2.5rem; /* bigger for laptop */
+      margin-bottom: 15px;
+    }
+    .home-header p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .home-header img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 10px;
+    }
+    .take-assessment-btn {
+      margin: 20px auto;
+      display: block;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      background-color: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+    .take-assessment-btn:hover {
+      background-color: #15803d;
+    }
+    @media screen and (max-width: 600px) {
+      .home-header h1 { font-size: 2rem; }
+      .home-header p { font-size: 1rem; }
+      .take-assessment-btn { font-size: 1rem; padding: 12px 20px; }
+    }
+    section.why-check p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Menu -->
@@ -20,15 +64,15 @@
       <!-- Home Page Image -->
       <img src="stress.png.jpeg" alt="Stress Awareness Image">
 
-      <p>Stress affects everyone differently. Monitoring your stress can help you maintain a healthy mind and body. Take our quick assessment to understand your stress level and get personalized tips.</p>
-      <a href="assessment.html"><button>Take Assessment</button></a>
-    </div>
+      <section class="why-check">
+        <h2>Why Check Your Stress?</h2>
+        <p>High stress can affect sleep, concentration, and mood. Understanding your stress level can help you manage it better with simple tips and exercises.</p>
+      </section>
 
-    <!-- Optional extra info -->
-    <section>
-      <h2>Why Check Your Stress?</h2>
-      <p>High stress can affect sleep, concentration, and mood. Understanding your stress level can help you manage it better with simple tips and exercises.</p>
-    </section>
+      <!-- Take Assessment Button -->
+      <a href="assessment.html" class="take-assessment-btn">Take Assessment</a>
+
+    </div>
   </header>
 </body>
 </html>
