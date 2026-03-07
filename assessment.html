@@ -80,6 +80,14 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  /* Small phone adjustments */
+  @media screen and (max-width: 400px) {
+    h1 { font-size: 1.8rem; }
+    #questionContainer { font-size: 1.2rem; }
+    .options button { width: 90%; font-size: 0.95rem; padding: 10px; }
+    #nameInput { width: 90%; font-size: 0.95rem; padding: 10px; }
+    #progressContainer { height: 15px; }
+  }
 </style>
 </head>
 <body>
@@ -170,7 +178,6 @@ function showFinalResult() {
     if(displayScore < score) {
       displayScore++;
       questionContainer.innerText = `Thank you, ${name}! Your stress score is: ${displayScore}`;
-      // Change color based on score level
       if(displayScore <= 10) questionContainer.style.color = 'green';
       else if(displayScore <= 20) questionContainer.style.color = 'orange';
       else questionContainer.style.color = 'red';
