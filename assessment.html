@@ -5,45 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stress Assessment</title>
 <style>
-body { background:#f8faf5; font-family:sans-serif; margin:0; padding:0; color:#222; text-align:center; }
-.container { max-width:700px; margin:50px auto; padding:20px; }
+body {
+  background:#f8faf5;
+  font-family:sans-serif;
+  margin:0;
+  padding:0;
+  color:#222;
+  text-align:center;
+}
+.container {
+  max-width:800px;
+  margin:80px auto;
+  padding:20px;
+}
 
 /* Headline */
-h1 { color:#065f46; font-size:2.5rem; margin-bottom:10px; }
+h1 {
+  color:#065f46;
+  font-size:3rem;
+  margin-bottom:25px;
+}
 
 /* Name input */
-input[type="text"] { width:80%; max-width:400px; padding:10px; margin-bottom:20px; font-size:1.1rem; border-radius:6px; border:1px solid #ccc; }
+input[type="text"] {
+  width:80%;
+  max-width:450px;
+  padding:15px;
+  margin-bottom:25px;
+  font-size:1.3rem;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
 
 /* Question */
-#questionContainer { font-size:2rem; margin-bottom:30px; line-height:1.6; opacity:0; animation:fadeIn 0.5s forwards; }
+#questionContainer {
+  font-size:2rem;
+  margin-bottom:30px;
+  line-height:1.6;
+  opacity:0;
+  animation:fadeIn 0.5s forwards;
+}
 
 /* Options buttons */
-.options button { display:block; width:90%; max-width:450px; padding:15px; margin:12px auto; font-size:1.2rem; border:none; border-radius:8px; cursor:pointer; background:#b0e0c8; color:#065f46; transition:0.2s; opacity:0; animation:fadeIn 0.5s forwards; }
+.options button {
+  display:block;
+  width:90%;
+  max-width:450px;
+  padding:18px;
+  margin:12px auto;
+  font-size:1.3rem;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#b0e0c8;
+  color:#065f46;
+  transition:0.2s;
+  opacity:0;
+  animation:fadeIn 0.5s forwards;
+}
 .options button:hover { background:#9dd4b0; }
 
 /* Progress bar */
-#progressContainer { width:90%; height:20px; background:#e6f3eb; border-radius:10px; margin:20px auto 30px auto; overflow:hidden; }
-#progressBar { height:100%; width:0%; border-radius:10px 0 0 10px; transition:width 0.6s ease, background 0.3s ease; }
+#progressContainer {
+  width:90%;
+  height:25px;
+  background:#e6f3eb;
+  border-radius:10px;
+  margin:25px auto 35px auto;
+  overflow:hidden;
+}
+#progressBar {
+  height:100%;
+  width:0%;
+  border-radius:10px 0 0 10px;
+  transition:width 0.6s ease, background 0.3s ease;
+}
 
 /* Tips */
-#tips { margin-top:25px; text-align:left; font-size:1.1rem; line-height:1.8; }
+#tips {
+  margin-top:25px;
+  text-align:left;
+  font-size:1.2rem;
+  line-height:1.8;
+}
 
 /* Disclaimer */
-#disclaimer { font-size:1rem; color:#555; text-align:right; margin-top:20px; }
+#disclaimer {
+  font-size:1rem;
+  color:#555;
+  text-align:right;
+  margin-top:20px;
+}
 
 /* Result buttons */
-#resultButtons { margin-top:20px; display:none; }
-#resultButtons button { width:40%; max-width:200px; margin:10px; padding:10px; font-size:1rem; border:none; border-radius:6px; cursor:pointer; background:#b0e0c8; color:#065f46; }
+#resultButtons {
+  margin-top:25px;
+  display:none;
+}
+#resultButtons button {
+  width:40%;
+  max-width:200px;
+  margin:10px;
+  padding:15px;
+  font-size:1.2rem;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#b0e0c8;
+  color:#065f46;
+}
 
 /* Animations */
 @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 
 /* Responsive */
 @media screen and (max-width:768px){
-  h1 { font-size:2rem; }
+  h1 { font-size:2.2rem; }
   #questionContainer { font-size:1.7rem; line-height:1.5; }
-  .options button { font-size:1.05rem; padding:12px; width:95%; }
-  #tips { font-size:1rem; line-height:1.6; }
+  .options button, #resultButtons button, input[type="text"] { font-size:1.1rem; padding:14px; width:95%; }
+  #tips { font-size:1.05rem; line-height:1.6; }
   #disclaimer { font-size:0.95rem; }
 }
 </style>
@@ -89,7 +169,7 @@ function showQuestion(){
       btn.style.opacity=0; btn.style.animation="fadeIn 0.5s forwards"; oc.appendChild(btn);
     });
     updateProgress();
-  }else showFinalResult();
+  } else showFinalResult();
 }
 
 function answer(selected){ score+=selected; currentQuestion++; showQuestion(); }
