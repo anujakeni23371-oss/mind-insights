@@ -96,3 +96,41 @@ font-size:14px;
 color:#555;
 box-shadow:0 -2px 6px rgba(0,0,0,0.05);
 }
+/* progress bar container */
+
+.progress-container{
+width:100%;
+background:#e8f5ec;
+border-radius:10px;
+height:14px;
+margin:20px 0;
+overflow:hidden;
+}
+
+/* progress bar fill */
+
+#progress-bar{
+height:100%;
+width:0%;
+border-radius:10px;
+background:linear-gradient(to right,#c8efd7,#9eddbb,#6fcf97);
+transition:width 0.4s ease;
+}
+
+/* answer buttons spacing */
+
+#answers{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:15px;
+}
+
+/* name input */
+
+#username{
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+width:200px;
+}
