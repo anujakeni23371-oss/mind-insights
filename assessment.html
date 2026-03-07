@@ -3,58 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mind Insights - Assessment</title>
-<link rel="stylesheet" href="style.css">
+<title>Stress Assessment</title>
+<link rel="stylesheet" href="style_final.css">
+<style>
+/* Extra inline styles for animations */
+.question {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+.options button {
+  display: block;
+  width: 80%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 10px auto;
+  font-size: 1rem;
+  background: #b0e0c8; /* pastel green */
+  color: #065f46;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+.options button:hover {
+  background: #9dd4b0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+#progressContainer {
+  width: 90%;
+  max-width: 700px;
+  height: 20px;
+  background: #e6f3eb;
+  border-radius: 10px;
+  margin: 15px auto 30px auto;
+  overflow: hidden;
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #b8c996, #827a8e);
+  border-radius: 10px 0 0 10px;
+  transition: width 0.6s ease, background 0.3s ease;
+}
+#disclaimer {
+  font-size: 0.8rem;
+  color: #555;
+  text-align: right;
+  margin-top: 15px;
+}
+#resultButtons {
+  margin-top: 20px;
+}
+#resultButtons button {
+  width: 40%;
+  max-width: 200px;
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="assessment.html">Assessment</a>
-  <a href="tips.html">Tips</a>
-</nav>
-
-<section class="assessment">
-  <h1>Stress Level Assessment</h1>
-  <p>Answer the following questions honestly to check your current stress level.</p>
-
-  <!-- Optional Name Input -->
+<div class="container">
+  <h1>Stress Self-Assessment</h1>
   <input type="text" id="nameInput" placeholder="Enter your name (optional)">
 
-  <!-- Progress Bar -->
   <div id="progressContainer">
     <div id="progressBar"></div>
   </div>
 
-  <!-- Question -->
   <div id="questionContainer" class="question">Loading question...</div>
-
-  <!-- Options -->
   <div class="options" id="optionsContainer"></div>
 
-  <!-- Result container -->
-  <div id="result" style="display:none;">
-    <div id="score"></div>
-    <div id="stress-level"></div>
-    <div id="tip"></div>
-
-    <button onclick="restartAssessment()" class="assessment-btn">Re-Assess</button>
-    <a href="index.html" class="assessment-btn">Home</a>
-  </div>
-
-  <!-- Disclaimer -->
   <div id="disclaimer">
     This tool is a self-assessment guide for stress awareness. It does not provide a medical diagnosis.
   </div>
-</section>
 
-<footer>
-  <p>Mind Insights – Stress Awareness Tool</p>
-  <p>This website provides a self-reflection tool for stress awareness only. It is not a medical or psychological diagnosis.</p>
-</footer>
+  <div id="resultButtons" style="display:none;">
+    <button id="reassessBtn">Re-assess</button>
+    <button onclick="window.location.href='index.html'">Home</button>
+  </div>
+</div>
 
 <script>
-// Questions array
 const questions = [
   { text: "How often do you feel stressed in a week?", options: ["Rarely", "Sometimes", "Often"] },
   { text: "Do you find it hard to sleep due to stress?", options: ["No", "Occasionally", "Yes"] },
@@ -71,19 +107,23 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 
-// Show question function
 function showQuestion() {
   if(currentQuestion < questions.length){
     const q = questions[currentQuestion];
     const questionContainer = document.getElementById('questionContainer');
     questionContainer.innerText = q.text;
+    questionContainer.style.opacity = 0;
+    questionContainer.style.animation = "fadeIn 0.5s forwards";
 
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
+
     q.options.forEach((opt, idx) => {
       const btn = document.createElement('button');
       btn.innerText = opt;
       btn.onclick = () => answer(idx);
+      btn.style.opacity = 0;
+      btn.style.animation = "fadeIn 0.5s forwards";
       optionsContainer.appendChild(btn);
     });
 
@@ -93,62 +133,66 @@ function showQuestion() {
   }
 }
 
-// Handle answer
 function answer(selected) {
-  score += selected; 
+  score += selected;
   currentQuestion++;
   showQuestion();
 }
 
-// Update progress bar
 function updateProgress() {
-  const percent = (currentQuestion / questions.length) * 100;
-  const startGreen = 200; 
-  const endGreen = 130; 
+  const percent = ((currentQuestion)/questions.length)*100;
+  const startGreen = 230;
+  const endGreen = 95;
   const greenValue = startGreen - Math.floor((currentQuestion / questions.length) * (startGreen - endGreen));
   const progressBar = document.getElementById('progressBar');
   progressBar.style.width = percent + '%';
-  progressBar.style.background = `linear-gradient(to right, rgb(170, ${greenValue}, 170), rgb(120, ${greenValue}, 120))`;
+  progressBar.style.background = `linear-gradient(to right, rgb(168, ${greenValue}, 163), rgb(76, ${greenValue}, 80))`;
 }
 
-// Show final result
 function showFinalResult() {
-  document.getElementById('questionContainer').style.display = 'none';
   document.getElementById('optionsContainer').style.display = 'none';
-  
-  const resultBox = document.getElementById('result');
-  resultBox.style.display = 'block';
-  
   const name = document.getElementById('nameInput').value || 'User';
-  document.getElementById('score').innerText = `Thank you, ${name}! Your stress score is: ${score}`;
-  
-  // Determine stress level and tip
-  let stressLevel = '';
-  let tipText = '';
-  
-  if(score <= 10){
-    stressLevel = 'Low Stress';
-    tipText = 'Keep maintaining your healthy routines. Regular breaks and light exercise help.';
-  } else if(score <= 20){
-    stressLevel = 'Moderate Stress';
-    tipText = 'Try mindfulness, short walks, and talking to friends/family to reduce stress.';
-  } else {
-    stressLevel = 'High Stress';
-    tipText = 'Consider planning your tasks, deep breathing exercises, and consulting support if needed.';
-  }
-  
-  document.getElementById('stress-level').innerText = `Stress Level: ${stressLevel}`;
-  document.getElementById('tip').innerText = `Tip: ${tipText}`;
+  const questionContainer = document.getElementById('questionContainer');
+
+  let displayScore = 0;
+  const interval = setInterval(() => {
+    if(displayScore < score) {
+      displayScore++;
+      questionContainer.innerText = `Thank you, ${name}! Your stress score is: ${displayScore}`;
+      if(displayScore <= 10) questionContainer.style.color = 'green';
+      else if(displayScore <= 20) questionContainer.style.color = 'orange';
+      else questionContainer.style.color = 'red';
+    } else {
+      clearInterval(interval);
+      showTips(displayScore);
+    }
+  }, 100);
+
+  document.getElementById('progressBar').style.width = '100%';
 }
 
-// Restart assessment
-function restartAssessment(){
-  score = 0;
+function showTips(finalScore) {
+  const tips = document.createElement('div');
+  tips.style.marginTop = '15px';
+  tips.style.textAlign = 'left';
+
+  if(finalScore <= 10) {
+    tips.innerHTML = "<h3>Low Stress Tips:</h3><p>Keep up your healthy routines and stay mindful of your workload.</p>";
+  } else if(finalScore <= 20) {
+    tips.innerHTML = "<h3>Moderate Stress Tips:</h3><p>Try relaxation techniques, take short breaks, and talk to friends/family.</p>";
+  } else {
+    tips.innerHTML = "<h3>High Stress Tips:</h3><p>Consider professional guidance, regular exercise, and structured stress management.</p>";
+  }
+
+  document.getElementById('questionContainer').appendChild(tips);
+  document.getElementById('resultButtons').style.display = 'block';
+}
+
+document.getElementById('reassessBtn').onclick = () => {
   currentQuestion = 0;
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('questionContainer').style.display = 'block';
+  score = 0;
   document.getElementById('optionsContainer').style.display = 'block';
-  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('resultButtons').style.display = 'none';
   showQuestion();
 }
 
@@ -157,4 +201,3 @@ window.onload = showQuestion;
 
 </body>
 </html>
-
