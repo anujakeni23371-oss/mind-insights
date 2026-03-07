@@ -188,6 +188,16 @@ function showFinalResult() {
 
   const progressBar = document.getElementById('progressBar');
   progressBar.style.width = '100%';
+  const restartBtn = document.createElement("button");
+restartBtn.innerText = "Restart Assessment";
+restartBtn.style.marginTop = "20px";
+
+restartBtn.onclick = function(){
+location.reload();
+};
+
+document.getElementById("optionsContainer").appendChild(restartBtn);
+document.getElementById("optionsContainer").style.display="block";
   progressBar.style.background = 'linear-gradient(to right, #4caf50, #2e7d32)';
 }
 
