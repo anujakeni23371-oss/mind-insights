@@ -201,3 +201,19 @@ text-align:center;
 }
 
 }
+/* Homepage layout for larger screens */
+
+@media (min-width:900px){
+
+.home{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+}
+
+.home-image{
+width:380px;
+}
+
+}
