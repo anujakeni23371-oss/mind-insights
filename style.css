@@ -1,114 +1,136 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9fafb;
-  color: #065f46;
-  margin: 0;
-  padding: 0;
+/* ===== Global Theme ===== */
+
+body{
+font-family: Arial, sans-serif;
+background:#FAFAF7;   /* off-white background */
+color:#2f3e34;
+margin:0;
+padding:0;
 }
 
-/* Navigation Menu */
-nav {
-  background-color: #16a34a;
-  padding: 10px;
-  text-align: center;
+/* ===== Navigation Bar ===== */
+
+nav{
+background:#FAFAF7;
+padding:12px;
+text-align:center;
+border-bottom:1px solid #e6e6e6;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 1rem;
+nav a{
+color:#2f3e34;
+text-decoration:none;
+margin:0 12px;
+font-size:1rem;
+font-weight:500;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav a:hover{
+color:#7fbf9a;
 }
 
-/* Home & Tips Header */
-header.home-header {
-  padding: 20px;
-  text-align: center;
+/* ===== Header Section ===== */
+
+header.home-header{
+padding:30px;
+text-align:center;
 }
 
-/* Responsive Titles */
-.home-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+/* Title */
+
+.home-header h1{
+font-size:2.4rem;
+margin-bottom:15px;
 }
 
-header.home-header p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Paragraph Text */
+
+header.home-header p{
+font-size:1.1rem;
+line-height:1.6;
+max-width:700px;
+margin:auto;
 }
 
-/* Home Page Image Responsive */
-header.home-header img {
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-  display: block;
-  margin: 15px auto;
-  border-radius: 10px;
-  object-fit: cover;
+/* ===== Image ===== */
+
+header.home-header img{
+width:100%;
+max-width:650px;
+height:auto;
+display:block;
+margin:20px auto;
+border-radius:10px;
 }
 
-/* Take Assessment Button */
-.take-assessment-btn, button {
-  margin-top: 15px;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  background-color: #16a34a; /* consistent green */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
+/* ===== Buttons ===== */
+
+.take-assessment-btn{
+display:inline-block;
+margin-top:20px;
+padding:10px 22px;
+font-size:1rem;
+background:#B7E4C7;   /* pastel green */
+color:#1b3a2f;
+border:none;
+border-radius:8px;
+cursor:pointer;
+text-decoration:none;
+transition:0.3s;
 }
 
-.take-assessment-btn:hover, button:hover {
-  background-color: #15803d; /* darker hover green */
+.take-assessment-btn:hover{
+background:#A5D6B8;
 }
 
-/* Assessment Page Options Buttons */
-.options button {
-  display: block;
-  width: 80%;
-  max-width: 400px;
-  padding: 12px;
-  margin: 10px auto;
-  font-size: 1rem;
-  background: #4caf50; /* consistent green with progress bar */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
+/* ===== Info Sections ===== */
+
+header.home-header section{
+background:#ffffff;
+padding:20px;
+margin:20px 0;
+border-radius:12px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Tips Page Styling */
-header.home-header section {
-  background-color: #dcfce7;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 10px;
+header.home-header section h2{
+color:#2f3e34;
+margin-bottom:10px;
 }
 
-header.home-header section h2 {
-  color: #16a34a;
-  margin-bottom: 8px;
+header.home-header section p{
+color:#4a5a50;
+line-height:1.6;
+font-size:1.05rem;
 }
 
-header.home-header section p {
-  color: #065f46;
-  line-height: 1.5;
-  font-size: 1.1rem;
+/* ===== Footer ===== */
+
+footer{
+margin-top:40px;
+padding:18px;
+background:#FAFAF7;
+color:#6b7a72;
+text-align:center;
+font-size:0.9rem;
+border-top:1px solid #e6e6e6;
 }
 
-/* Responsive adjustments for mobile */
-@media screen and (max-width: 600px) {
-  .home-header h1 { font-size: 2rem; }
-  .home-header p { font-size: 1rem; }
-  .take-assessment-btn, button { font-size: 1rem; padding: 12px 20px; }
-  header.home-header section p { font-size: 1rem; }
+/* ===== Mobile ===== */
+
+@media screen and (max-width:600px){
+
+.home-header h1{
+font-size:2rem;
+}
+
+header.home-header p{
+font-size:1rem;
+}
+
+.take-assessment-btn{
+font-size:0.95rem;
+padding:9px 18px;
+}
+
 }
