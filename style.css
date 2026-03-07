@@ -1,219 +1,194 @@
-/* Reset */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+/* ---------- General Styles ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fefefe; /* off-white */
+  color: #065f46; /* dark green text */
+  margin: 0;
+  padding: 0;
 }
 
-/* Body */
-
-body{
-background:#F5F8F6;
-color:#2f3e34;
-line-height:1.7;
-font-size:18px;
-padding:0 20px;
+.navbar {
+  background-color: #a8d5ba; /* pastel green navbar */
+  padding: 12px 0;
+  text-align: center;
 }
 
-/* Navigation */
-
-.navbar{
-background:white;
-padding:18px;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
-text-align:center;
+.navbar a {
+  color: #065f46;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
 }
 
-.navbar a{
-margin:0 18px;
-text-decoration:none;
-color:#5F7F6A;
-font-weight:600;
-font-size:18px;
+.navbar a:hover {
+  text-decoration: underline;
 }
 
-.navbar a:hover{
-color:#6F8F7A;
+/* ---------- Sections ---------- */
+section {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 15px;
+  line-height: 1.6;
 }
 
-/* Main container */
-
-.home{
-max-width:1000px;
-margin:auto;
-padding:50px 10px;
-text-align:left;
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* Title */
-
-h1{
-font-size:48px;
-margin-bottom:20px;
-color:#5F7F6A;
+p.intro {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Intro text */
-
-.intro{
-font-size:21px;
-margin-bottom:25px;
-max-width:700px;
+/* ---------- Assessment & Quiz ---------- */
+input[type="text"] {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Image */
-
-.home-image{
-width:340px;
-margin:25px 0;
-border-radius:12px;
+#progressContainer {
+  width: 90%;
+  max-width: 500px;
+  height: 20px;
+  background-color: #e0f2e9; /* very light green */
+  border-radius: 10px;
+  margin: 15px auto;
+  overflow: hidden;
 }
 
-/* Buttons */
-
-.assessment-btn{
-display:inline-block;
-margin-top:20px;
-padding:14px 30px;
-background:#8FAF98;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:600;
-font-size:17px;
-border:none;
-cursor:pointer;
-transition:0.3s;
+#progressBar {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.6s ease, background 0.3s ease;
 }
 
-.assessment-btn:hover{
-background:#6F8F7A;
+.question {
+  font-size: 1.4rem;
+  margin: 20px 0 15px 0;
+  text-align: center;
 }
 
-/* Progress bar */
-
-.progress-container{
-width:100%;
-background:#E6EFEA;
-border-radius:10px;
-height:14px;
-margin:25px 0;
-overflow:hidden;
+.options button {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #b7e4c7; /* soft pastel green */
+  color: #065f46;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-#progress-bar{
-height:100%;
-width:0%;
-background:linear-gradient(to right,#CFE2D6,#8FAF98,#6F8F7A);
-transition:width 0.4s ease;
+.options button:hover {
+  background-color: #9fd8a2; /* slightly darker on hover */
 }
 
-/* Answers */
-
-#answers{
-display:flex;
-flex-direction:column;
-gap:14px;
-margin-top:20px;
-max-width:450px;
+.assessment-btn {
+  display: block;
+  width: 90%;
+  max-width: 300px;
+  margin: 15px auto;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #b7e4c7;
+  color: #065f46;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
-/* Result box */
-
-#result{
-background:#EEF4EF;
-padding:30px;
-border-radius:12px;
-margin-top:30px;
-max-width:600px;
+.assessment-btn:hover {
+  background-color: #9fd8a2;
 }
 
-/* Score */
-
-#score{
-font-size:26px;
-margin-bottom:10px;
-color:#5F7F6A;
+/* ---------- Result ---------- */
+#result {
+  text-align: center;
+  margin-top: 20px;
 }
 
-/* Stress level */
-
-#stress-level{
-font-size:20px;
-margin-bottom:15px;
-color:#6F8F7A;
+#score {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
-/* Tip */
-
-#tip{
-font-size:18px;
-line-height:1.6;
-max-width:500px;
-color:#333;
+#stress-level {
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-/* Name input */
-
-#username{
-padding:10px;
-border-radius:6px;
-border:1px solid #ccc;
-width:220px;
-font-size:16px;
+#tip {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* Footer */
-
-footer{
-margin-top:60px;
-padding:20px;
-font-size:14px;
-color:#6b6b6b;
-text-align:center;
+/* ---------- Disclaimer ---------- */
+#disclaimer {
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+  margin-top: 25px;
 }
 
-/* Mobile adjustments */
-
-@media (max-width:768px){
-
-h1{
-font-size:34px;
+/* ---------- Tips Page ---------- */
+header.home-header section {
+  padding: 15px;
+  margin: 20px auto;
 }
 
-.intro{
-font-size:18px;
+header.home-header section h2 {
+  color: #065f46;
+  margin-bottom: 8px;
 }
 
-.home{
-padding:30px 5px;
+header.home-header section p {
+  color: #065f46;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
-.home-image{
-width:250px;
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #a8d5ba; /* pastel green */
+  color: #065f46;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.assessment-btn{
-width:100%;
-text-align:center;
-}
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
-}
-/* Homepage layout for larger screens */
+  .question {
+    font-size: 1.2rem;
+  }
 
-@media (min-width:900px){
-
-.home{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:40px;
-}
-
-.home-image{
-width:380px;
-}
-
+  .options button, .assessment-btn {
+    width: 95%;
+    font-size: 0.95rem;
+  }
 }
