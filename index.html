@@ -4,28 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mind Insights</title>
-<link rel="stylesheet" href="style_final.css">
+<style>
+body {
+  background:#f8faf5;
+  font-family:sans-serif;
+  margin:0;
+  padding:0;
+  color:#222;
+  text-align:center;
+}
+.container {
+  max-width:800px;
+  margin:100px auto;
+  padding:20px;
+}
+
+/* Headline */
+h1 {
+  color:#065f46;
+  font-size:4rem;
+  margin-bottom:25px;
+}
+
+/* Subtext */
+p {
+  font-size:1.6rem;
+  margin:15px 0;
+  color:#333;
+  line-height:1.8;
+}
+
+/* Assessment Button */
+#assessmentBtn {
+  margin-top:40px;
+  padding:18px 40px;
+  font-size:1.5rem;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#b0e0c8;
+  color:#065f46;
+  transition:0.2s;
+}
+#assessmentBtn:hover {
+  background:#9dd4b0;
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+  h1 { font-size:2.8rem; }
+  p { font-size:1.3rem; }
+  #assessmentBtn { font-size:1.2rem; padding:15px 30px; }
+}
+</style>
 </head>
-<body style="background:#f8faf5;">
-
-<div style="text-align:center; padding:50px 20px;">
-  <h1 style="color:#065f46; font-size:2.5rem; margin-bottom:10px;">Mind Insights</h1>
-  <p style="font-size:1.2rem; margin-bottom:20px; color:#000;">A Stress Self-Assessment Tool</p>
-
-  <section style="max-width:700px; margin:0 auto; text-align:center;">
-    <h2 style="color:#333; margin-bottom:10px;">Why Check Your Stress?</h2>
-    <p style="color:#555; line-height:1.6;">Stress affects your sleep, concentration, and mood. Understanding your stress level can help you manage it better with simple exercises and tips.</p>
-  </section>
-
-  <a href="assessment.html">
-    <button style="margin-top:30px; padding:12px 25px; font-size:1rem; background:#b0e0c8; color:#065f46; border:none; border-radius:8px; cursor:pointer;">Take Assessment</button>
-  </a>
+<body>
+<div class="container">
+  <h1>Welcome to Mind Insights</h1>
+  <p>It’s an assessment tool</p>
+  <p><strong>Why check your stress?</strong><br>Understanding your stress levels helps you manage your mental health effectively.</p>
+  <button id="assessmentBtn" onclick="window.location.href='assessment.html'">Take Assessment</button>
 </div>
-
-<footer style="margin-top:40px; padding:15px; color:#555; text-align:center; font-size:0.9rem;">
-  <p>Mind Insights – Stress Awareness Tool</p>
-  <p>This website provides a self-assessment for stress awareness only. It is not a medical or psychological diagnosis.</p>
-</footer>
-
 </body>
 </html>
