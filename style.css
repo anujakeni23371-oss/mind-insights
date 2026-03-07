@@ -1,136 +1,98 @@
-/* ===== Global Theme ===== */
+/* Reset */
 
-body{
-font-family: Arial, sans-serif;
-background:#FAFAF7;   /* off-white background */
-color:#2f3e34;
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-/* ===== Navigation Bar ===== */
+/* Body */
 
-nav{
-background:#FAFAF7;
-padding:12px;
-text-align:center;
-border-bottom:1px solid #e6e6e6;
-}
-
-nav a{
-color:#2f3e34;
-text-decoration:none;
-margin:0 12px;
-font-size:1rem;
-font-weight:500;
-}
-
-nav a:hover{
-color:#7fbf9a;
-}
-
-/* ===== Header Section ===== */
-
-header.home-header{
-padding:30px;
-text-align:center;
-}
-
-/* Title */
-
-.home-header h1{
-font-size:2.4rem;
-margin-bottom:15px;
-}
-
-/* Paragraph Text */
-
-header.home-header p{
-font-size:1.1rem;
+body{
+background:#f9faf7;
+color:#333;
 line-height:1.6;
-max-width:700px;
+text-align:center;
+}
+
+/* Navbar */
+
+.navbar{
+background:white;
+padding:15px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.navbar a{
+margin:0 15px;
+text-decoration:none;
+color:#3a6f55;
+font-weight:600;
+}
+
+.navbar a:hover{
+color:#6fbf8f;
+}
+
+/* Home Section */
+
+.home{
+padding:40px 20px;
+max-width:800px;
 margin:auto;
 }
 
-/* ===== Image ===== */
+.home h1{
+font-size:36px;
+margin-bottom:15px;
+color:#3a6f55;
+}
 
-header.home-header img{
-width:100%;
-max-width:650px;
-height:auto;
-display:block;
-margin:20px auto;
+.intro{
+margin-bottom:25px;
+font-size:18px;
+}
+
+/* Image */
+
+.home-image{
+width:260px;
+margin:20px 0;
 border-radius:10px;
 }
 
-/* ===== Buttons ===== */
+/* Why stress section */
 
-.take-assessment-btn{
+.why-stress{
+margin:30px 0;
+}
+
+/* Button */
+
+.assessment-btn{
 display:inline-block;
 margin-top:20px;
-padding:10px 22px;
-font-size:1rem;
-background:#B7E4C7;   /* pastel green */
-color:#1b3a2f;
-border:none;
-border-radius:8px;
-cursor:pointer;
+padding:12px 24px;
+background:#b9e4c9;
+color:#1d4d3a;
 text-decoration:none;
+border-radius:8px;
+font-weight:600;
 transition:0.3s;
 }
 
-.take-assessment-btn:hover{
-background:#A5D6B8;
+.assessment-btn:hover{
+background:#9edbb5;
 }
 
-/* ===== Info Sections ===== */
-
-header.home-header section{
-background:#ffffff;
-padding:20px;
-margin:20px 0;
-border-radius:12px;
-box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-
-header.home-header section h2{
-color:#2f3e34;
-margin-bottom:10px;
-}
-
-header.home-header section p{
-color:#4a5a50;
-line-height:1.6;
-font-size:1.05rem;
-}
-
-/* ===== Footer ===== */
+/* Footer */
 
 footer{
-margin-top:40px;
-padding:18px;
-background:#FAFAF7;
-color:#6b7a72;
-text-align:center;
-font-size:0.9rem;
-border-top:1px solid #e6e6e6;
-}
-
-/* ===== Mobile ===== */
-
-@media screen and (max-width:600px){
-
-.home-header h1{
-font-size:2rem;
-}
-
-header.home-header p{
-font-size:1rem;
-}
-
-.take-assessment-btn{
-font-size:0.95rem;
-padding:9px 18px;
-}
-
+margin-top:50px;
+padding:20px;
+background:white;
+font-size:14px;
+color:#555;
+box-shadow:0 -2px 6px rgba(0,0,0,0.05);
 }
